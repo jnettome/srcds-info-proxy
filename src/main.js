@@ -114,6 +114,22 @@ app.get("/statusall", (req, res) => {
             });
         });
     }
+});
+
+app.get("/csgo_version", (req, response) => {
+    http.get("http://api.steampowered.com/ISteamApps/UpToDateCheck/v0001/?appid=730&version=1&format=json", res => {
+        res.setEncoding("utf8");
+        let body = "";
+        res.on("data", data => {
+            body += data;
+        });
+        res.on("end", () => {
+            body = JSON.parse(body);
+            response.status(200).send({
+                required_version: body.response.required_version
+            });
+        });
+      });
 })
 
 function start() {

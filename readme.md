@@ -77,3 +77,19 @@ If you're using a `servers.txt` file, you can make a request like this:
 
 If the `servers.txt` has valid RCON addresses, it will return an array of objects exact same as `get a server status` section,
 of all servers described on it.
+
+### get latest csgo version
+
+Make a request like:
+
+`localhost:8080/csgo_version`
+
+You'll get the following json:
+
+```
+{
+    required_version: 13745
+}
+```
+
+That's a helper that checks on `http://api.steampowered.com/ISteamApps/UpToDateCheck/v0001/?appid=730&version=1&format=json` to get the latest csgo version that srcds must use.
